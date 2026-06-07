@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Partner Profile</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #a1c4fd, #c2e9fb, #fbc2eb);
+        font-family: "Segoe UI", sans-serif;
+        color: #1c1c1e;
+        padding: 2rem;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      .logout-container {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
+      }
+
+      .btn-logout {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: 500;
+      }
+
+      .profile-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #0d6efd;
+        text-shadow: 1px 1px 0 #6610f2, 2px 2px 0 #6f42c1;
+      }
+
+      #partnerName {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .profile-image-wrapper {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 1rem auto;
+      }
+
+      #profileImage {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #0d6efd;
+      }
+
+      #uploadImage {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        opacity: 0;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      #uploadLabel {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 48px;
+        height: 48px;
+        background-color: #0d6efd;
+        color: white;
+        font-size: 20px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 48px;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      .profile-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+        border-bottom: 1px solid #dee2e6;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      .profile-label {
+        flex: 0 0 30%;
+        font-weight: 600;
+        color: #495057;
+      }
+
+      .profile-value {
+        flex: 1;
+        color: #1c1c1e;
+      }
+
+      .edit-btn {
+        background: none;
+        border: none;
+        color: #0d6efd;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-left: 1rem;
+      }
+
+      #selected-actors {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        background-color: #e3f2fd;
+        padding: 0.5rem;
+        border-radius: 8px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      #actor-input {
+        max-width: 800px;
+        margin: 1rem auto;
+      }
+
+      @media (max-width: 576px) {
+        .profile-row {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 0.8rem 0;
+        }
+
+        .profile-label {
+          margin-bottom: 0.3rem;
+        }
+
+        .logout-container {
+          top: 10px;
+          right: 10px;
+        }
+
+        .btn-logout {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logout-container">
+      <button onclick="logout()" class="btn btn-logout">Logout</button>
+    </div>
+
+    <div class="profile-header">
+      <div class="profile-image-wrapper">
+        <img id="profileImage" src="" alt="Profile" />
+        <input type="file" id="uploadImage" accept="image/*" />
+        <label for="uploadImage" id="uploadLabel" title="Change Profile Image"
+          >✎</label
+        >
+      </div>
+      <h2>Partner Profile</h2>
+      <div id="partnerName">Partner Name</div>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-label">Designation</div>
+      <div class="profile-value" id="designation"></div>
+      <button class="edit-btn" onclick="editField('designation')">✎</button>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-label">Country</div>
+      <div class="profile-value" id="country"></div>
+      <button class="edit-btn" onclick="editField('country')">✎</button>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-label">State</div>
+      <div class="profile-value" id="state"></div>
+      <button class="edit-btn" onclick="editField('state')">✎</button>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-label">Phone</div>
+      <div class="profile-value" id="phone"></div>
+      <button class="edit-btn" onclick="editField('phone')">✎</button>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-label">Public Email</div>
+      <div class="profile-value" id="public_email"></div>
+      <button class="edit-btn" onclick="editField('public_email')">✎</button>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-label">Address</div>
+      <div class="profile-value" id="address"></div>
+      <button class="edit-btn" onclick="editField('address')">✎</button>
+    </div>
+
+    <div class="profile-row">
+      <div class="profile-label">About</div>
+      <div class="profile-value" id="about"></div>
+      <button class="edit-btn" onclick="editField('about')">✎</button>
+    </div>
+
+    <div class="mt-4 text-center fw-semibold mb-2">Expertise</div>
+    <div id="selected-actors"></div>
+    <input
+      type="text"
+      id="actor-input"
+      class="form-control"
+      placeholder="Type and press Enter"
+      onkeypress="handleKeyPress(event)"
+    />
+
+    <script src="profile.js"></script>
+  </body>
+</html>

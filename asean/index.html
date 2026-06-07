@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASEAN Countries Interface</title>
+    <link href="./output.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .modal-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+      }
+      .modal-content h2 {
+        margin-bottom: 1rem;
+        color: #2563eb;
+      }
+      .modal-content button {
+        margin-top: 1rem;
+      }
+
+      .layout-container {
+        width: 1366px;
+        margin: 0 auto;
+        position: relative;
+        overflow-x: hidden;
+      }
+      .box-animation {
+        transition: all 0.3s ease-in-out;
+      }
+      .box-animation:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      @keyframes floating-horizontal {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(5px);
+        }
+      }
+      .animate-floating {
+        animation: floating-horizontal 3s ease-in-out infinite;
+      }
+      @media (max-width: 1024px) {
+        .layout-container {
+          display: none;
+        }
+        .mobile-container {
+          display: block;
+        }
+      }
+      @media (min-width: 1025px) {
+        .layout-container {
+          display: block;
+        }
+        .mobile-container {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout-container h-screen">
+      <div class="flex justify-between items-center px-6 py-4">
+        <!-- Partner Sign Up -->
+        <a
+          id="signupPartnerBtn"
+          href="client/signup-partner.html"
+          class="px-5 py-2 border border-gray-300 rounded-full text-sm text-gray-700 hover:bg-gray-50"
+        >
+          Sign Up as Partner
+        </a>
+        <!-- Partner Profile -->
+        <a
+          id="partnerProfileLink"
+          href="client/partner-profile.html"
+          class="hidden text-blue-600"
+          title="Partner Profile"
+        >
+          <i class="fas fa-user-circle fa-2x"></i>
+        </a>
+
+        <!-- Logo -->
+        <img
+          src="./images/logo.png"
+          alt="ASEAN Logo"
+          class="h-8 object-contain"
+        />
+
+        <!-- Client Sign Up -->
+        <a id="signupClientBtn" href="client/signup.html">
+          <button
+            class="px-5 py-2 bg-indigo-500 text-sm text-white rounded-full hover:bg-indigo-600"
+          >
+            Sign Up as Client
+          </button>
+        </a>
+        <!-- Client Profile Icon -->
+        <button
+          id="clientProfileBtn"
+          class="hidden text-blue-600"
+          title="Client Profile"
+        >
+          <i class="fas fa-user-circle fa-2x"></i>
+        </button>
+      </div>
+
+      <!-- Client Profile Modal -->
+      <div id="clientProfileModal" class="modal">
+        <div class="modal-content">
+          <h2>Client Profile</h2>
+          <p>
+            <strong>Name:</strong>
+            <span id="clientNameDisplay">Loading...</span>
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <span id="clientEmailDisplay">Loading...</span>
+          </p>
+          <button
+            onclick="window.location.href='client/logout.php'"
+            class="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+
+      <div class="flex gap-6 m-4">
+        <div class="flex gap-5">
+          <div>
+            <a href="page.php?country=Brunei Darussalam">
+              <div
+                class="bg-[#F3F3F3] w-[250px] animate-floating p-6 h-[380px] text-center rounded-xl box-animation"
+              >
+                <h2 class="font-semibold">Brunei Darussalam</h2>
+                <p class="text-sm">
+                  Unleash your brand's potential with MetaUpSpace: Resultsdriven
+                  solutions for.
+                </p>
+                <img
+                  src="./images/image-7.png"
+                  alt=""
+                  class="mx-auto w-full h-60 object-cover mt-5"
+                />
+              </div>
+            </a>
+
+            <a href="page.php?country=Lao PDR">
+              <div
+                class="bg-[#F3F3F3] mt-6 animate-floating flex w-[250px] h-[120px] rounded-xl box-animation"
+              >
+                <img
+                  src="./images/image-2.png"
+                  alt=""
+                  class="mx-auto w-[200px] h-full object-cover"
+                />
+                <div class="ml-4 mt-4">
+                  <h2 class="font-semibold">Lao PDR</h2>
+                  <p class="text-xs">
+                    Unleash your brand's potential with MetaUpSpace.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="flex gap-6">
+            <a href="page.php?country=Indonesia">
+              <div
+                class="bg-[#F3F3F3] animate-floating mt-44 p-6 w-[200px] h-[340px] text-center rounded-xl box-animation"
+              >
+                <h2 class="text-lg font-semibold">Indonesia</h2>
+                <p class="text-xs leading-relaxed">
+                  Unleash your brand's potential with MetaUpSpace:
+                  Results-driven solutions.
+                </p>
+                <img
+                  src="./images/image-5.png"
+                  alt=""
+                  class="mx-auto w-[160px] h-40 object-cover rounded-lg mt-5"
+                />
+              </div>
+            </a>
+
+            <a href="page.php?country=Singapore">
+              <div
+                class="bg-[#F3F3F3] animate-floating flex items-center w-[240px] mt-44 h-48 rounded-xl box-animation"
+              >
+                <img
+                  src="./images/image.png"
+                  alt=""
+                  class="w-24 h-full object-cover rounded-lg"
+                />
+                <div class="ml-4">
+                  <h2 class="text-lg font-semibold mt-5">Singapore</h2>
+                  <p class="text-xs mb-8 leading-relaxed">
+                    Unleash your brand's potential with MetaUpSpace.
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            <a href="page.php?country=Malaysia">
+              <div
+                class="bg-[#F3F3F3] animate-floating gap-5 flex w-[530px] h-32 rounded-xl ml-24 p-4 justify-between absolute top-[470px] left-1/2 -translate-x-1/2 box-animation"
+              >
+                <div class="flex-1">
+                  <h2 class="font-semibold">Malaysia</h2>
+                  <p class="text-xs mt-5">
+                    Unleash your brand's potential with MetaUpSpace.
+                  </p>
+                </div>
+                <div class="flex-1 flex justify-end">
+                  <img
+                    src="./images/image-8.png"
+                    alt=""
+                    class="w-full object-cover rounded-lg"
+                  />
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="page.php?country=Cambodia">
+          <div
+            class="bg-[#F3F3F3] gap-5 animate-floating flex w-[460px] ml-[-485px] h-40 rounded-xl p-4 justify-between box-animation"
+          >
+            <div class="flex-1">
+              <h2 class="font-semibold">Cambodia</h2>
+              <p class="text-xs mt-5">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+            <div class="flex-1 flex justify-end">
+              <img
+                src="./images/image-3.png"
+                alt=""
+                class="w-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Philippines">
+          <div
+            class="bg-[#F3F3F3] animate-floating p-6 w-[280px] h-[370px] text-center rounded-xl box-animation"
+          >
+            <img
+              src="./images/image-4.png"
+              alt=""
+              class="mx-auto w-[260px] h-40 object-cover rounded-lg"
+            />
+            <h2 class="mt-6 text-lg font-semibold">Philippines</h2>
+            <p class="text-xs mt-5 leading-relaxed">
+              Unleash your brand's potential with MetaUpSpace.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <div class="flex justify-end mt-[-538px] m-4">
+        <div>
+          <a href="page.php?country=Vietnam">
+            <div
+              class="bg-[#F3F3F3] animate-floating p-6 w-[280px] ml-20 h-[370px] text-center rounded-xl box-animation"
+            >
+              <h2 class="font-semibold">Vietnam</h2>
+              <p class="text-xs mt-5">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+              <img
+                src="./images/image-6.png"
+                alt=""
+                class="mx-auto w-full h-56 object-cover mt-5"
+              />
+            </div>
+          </a>
+
+          <a href="page.php?country=Myanmar">
+            <div
+              class="bg-[#F3F3F3] animate-floating mt-6 flex ml-20 w-[280px] h-[110px] rounded-xl box-animation"
+            >
+              <img
+                src="./images/image-1.png"
+                alt=""
+                class="mx-auto w-[200px] h-full object-cover"
+              />
+              <div class="ml-4 mt-4">
+                <h2 class="font-semibold">Myanmar</h2>
+                <p class="text-xs">
+                  Unleash your brand's potential with MetaUpSpace.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!--  mobile  -->
+    <div class="container lg:hidden mx-auto p-4">
+      <!-- Header with Logo and Buttons -->
+      <div class="flex flex-col items-center mb-6 space-y-3">
+        <img
+          src="./images/logo.png"
+          alt="ASEAN Logo"
+          class="h-8 object-contain"
+        />
+        <div class="flex flex-col w-full space-y-3">
+          <button
+            class="w-full px-5 py-2 border border-gray-300 rounded-full text-sm text-gray-700 hover:bg-gray-50"
+          >
+            Sign Up as Partner
+          </button>
+          <button
+            class="w-full px-5 py-2 bg-indigo-500 text-sm text-white rounded-full hover:bg-indigo-600"
+          >
+            Sign Up as Client
+          </button>
+        </div>
+      </div>
+
+      <!-- Grid of Cards -->
+      <div class="grid grid-cols-1 gap-4">
+        <!-- Repeat for each country -->
+        <a href="page.php?country=Brunei Darussalam">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-7.png"
+              alt="Brunei Darussalam"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Brunei Darussalam</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Lao PDR">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-2.png"
+              alt="Lao PDR"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Lao PDR</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Indonesia">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-5.png"
+              alt="Indonesia"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Indonesia</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Cambodia">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-3.png"
+              alt="Cambodia"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Cambodia</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Malaysia">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-8.png"
+              alt="Malaysia"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Malaysia</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Philippines">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-4.png"
+              alt="Philippines"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Philippines</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Vietnam">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-6.png"
+              alt="Vietnam"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Vietnam</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Myanmar">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image-1.png"
+              alt="Myanmar"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Myanmar</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="page.php?country=Singapore">
+          <div
+            class="bg-gray-100 rounded-xl overflow-hidden shadow-sm box-animation"
+          >
+            <img
+              src="./images/image.png"
+              alt="Singapore"
+              class="w-full h-auto object-cover"
+            />
+            <div class="p-4 text-center">
+              <h2 class="font-semibold text-lg">Singapore</h2>
+              <p class="text-xs mt-2 text-gray-600">
+                Unleash your brand's potential with MetaUpSpace.
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <script>
+      // CLIENT profile setup and modal logic
+      async function setupClientProfile() {
+        try {
+          const res = await fetch("client/session-check.php");
+          const data = await res.json();
+
+          if (data.loggedIn) {
+            document.getElementById("signupClientBtn").classList.add("hidden");
+            document
+              .getElementById("clientProfileBtn")
+              .classList.remove("hidden");
+            document.getElementById("clientNameDisplay").textContent =
+              data.name || "N/A";
+            document.getElementById("clientEmailDisplay").textContent =
+              data.email || "Not set";
+          }
+        } catch (err) {
+          console.error("Error checking client session", err);
+        }
+      }
+
+      // PARTNER profile link display logic — no modal
+      async function setupPartnerProfile() {
+        try {
+          const res = await fetch("client/session-check-partner.php");
+          const data = await res.json();
+
+          if (data.loggedIn) {
+            document.getElementById("signupPartnerBtn").classList.add("hidden");
+            document
+              .getElementById("partnerProfileLink")
+              .classList.remove("hidden");
+          }
+        } catch (err) {
+          console.error("Error checking partner session", err);
+        }
+      }
+
+      // Client profile modal open/close
+      document.addEventListener("DOMContentLoaded", () => {
+        const profileBtn = document.getElementById("clientProfileBtn");
+        const modal = document.getElementById("clientProfileModal");
+
+        if (profileBtn) {
+          profileBtn.addEventListener("click", () => {
+            modal.style.display = "flex";
+          });
+        }
+
+        window.addEventListener("click", (e) => {
+          if (e.target.classList.contains("modal")) {
+            e.target.style.display = "none";
+          }
+        });
+
+        // Initialize
+        setupClientProfile();
+        setupPartnerProfile();
+      });
+    </script>
+  </body>
+</html>

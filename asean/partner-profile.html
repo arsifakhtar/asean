@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Partner Profile</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-4xl mx-auto py-10 px-6 bg-white shadow-md rounded-lg mt-10">
+    <h2 class="text-3xl font-semibold mb-6 text-center text-blue-600">Partner Profile</h2>
+    <div class="flex flex-col items-center text-center mb-8">
+      <div class="relative">
+        <img id="profileImage" src="" alt="Profile" class="w-32 h-32 rounded-full border-4 border-blue-400 object-cover"/>
+        <input type="file" id="uploadImage" class="absolute bottom-0 right-0 p-1 bg-white rounded-full cursor-pointer" style="display: none;" accept="image/*"/>
+        <label for="uploadImage" class="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full cursor-pointer">✎</label>
+      </div>
+      <h3 id="partnerName" class="text-xl font-semibold mt-4"></h3>
+    </div>
+    <div class="space-y-4">
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">Designation:</span>
+        <span id="designation"></span>
+        <button onclick="editField('designation')">✎</button>
+      </div>
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">Country:</span>
+        <span id="country"></span>
+        <button onclick="editField('country')">✎</button>
+      </div>
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">State:</span>
+        <span id="state"></span>
+        <button onclick="editField('state')">✎</button>
+      </div>
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">Phone:</span>
+        <span id="phone"></span>
+        <button onclick="editField('phone')">✎</button>
+      </div>
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">Public Email:</span>
+        <span id="public_email"></span>
+        <button onclick="editField('public_email')">✎</button>
+      </div>
+      <div class="flex justify-between items-center border-b pb-2">
+        <span class="font-medium">Address:</span>
+        <span id="address"></span>
+        <button onclick="editField('address')">✎</button>
+      </div>
+      <div class="border-b pb-2">
+        <span class="font-medium">About:</span>
+        <p id="about" class="mt-1"></p>
+        <button onclick="editField('about')">✎</button>
+      </div>
+      <div class="mt-4">
+        <label for="expertise" class="font-medium">Expertise:</label>
+        <div class="selected-actors mt-2" id="selected-actors"></div>
+        <input type="text" id="actor-input" class="mt-2 p-2 border rounded w-full" placeholder="Type and press Enter" onkeypress="handleKeyPress(event)"/>
+      </div>
+    </div>
+    <button onclick="logout()" class="mt-6 px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700">Logout</button>
+  </div>
+<script src="profile.js"></script>
+</body>
+</html>
